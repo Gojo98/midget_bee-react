@@ -9,9 +9,9 @@ function CabecalhoTabela() {
         <thead>
             <tr>
                 <th>Nome do Animes</th>
+                <th>Sinopse</th>
                 <th>Imagem do Animes</th>
-                <th>Id do Animes</th>
-                <th>Details/Delete</th>
+                <th>Delete</th>
             </tr>
         </thead>
     )
@@ -22,18 +22,19 @@ function CabecalhoTabela() {
 const CorpoTabela = (props) => {
     // esta função 'interna' irá ler e processar todos
     // os objetos definidos dentro do array 'dadosDosAnimes'
-    const rows = props.dadosDosAnimes.map((row, idAnime) => {
+    const rows = props.dadosDosAnimes.map((row) => {
         return (
-            <tr key={idAnime}>
+            <tr key={row.idAnime}>
                 <td>{row.nome}</td>
+                <td>{row.sinopse}</td>
                 <td><img src={'fotos/' + row.fotografia}
                     alt={'foto do ' + row.nome}
-                    height="100" />
+                    height="140"
+                    width="100" />
                 </td>
-                <td>{row.idAnime}</td>
                 <td>
-                    <button type="button"  class="btn btn-outline-info btn-rounded">Details</button><br></br><br></br>
-                    <button type="button"  class="btn btn-outline-danger btn-rounded" onClick={()=>props.animeAremover(idAnime)}>Delete</button>
+                    <br></br>
+                    <button type="button"  className="btn btn-outline-danger btn-rounded" onClick={()=>props.animeAremover(row)}>Delete</button>
                 </td>
             </tr>
         )
@@ -49,15 +50,16 @@ class Tabela extends React.Component {
     render() {
 
         // estamos a ler os dados que são recebidos pelo componente
-        // <=> this.props.dadosAlunos
-        const { dadosanimes, anime } = this.props
+        // <=> this.props.dadosanimes
+        const { inDadosAnimes, anime } = this.props
 
         return (
             <table className="table table-striped">
                 <CabecalhoTabela />
                 {/* o parâmetro 'dadosAnimes' irá receber
                     os dados que vêm da componente 'mãe' */}
-                <CorpoTabela dadosDosAnimes={dadosanimes} animeAremover={anime}/>
+                <CorpoTabela dadosDosAnimes={inDadosAnimes} 
+                    animeAremover={anime}/>
             </table>
         )
     }
