@@ -34,7 +34,13 @@ async function getAnimes() {
   let formData = new FormData();
   formData.append("Nome", dadosNovoAnime.Nome);
   formData.append("UpFotografia", dadosNovoAnime.UpFotografia);
+  formData.append("Rating", dadosNovoAnime.Rating);
   formData.append("Sinopse", dadosNovoAnime.Sinopse);
+  formData.append("QuantEpisodios", dadosNovoAnime.QuantEpisodios);
+  formData.append("Autor", dadosNovoAnime.Autor);
+  formData.append("Estudio", dadosNovoAnime.Estudio);
+  formData.append("Data", dadosNovoAnime.Data);
+  formData.append("Links", dadosNovoAnime.Links);
 
   let resposta = await fetch("api/API/", {
     method: "POST",

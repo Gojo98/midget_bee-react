@@ -9,7 +9,12 @@ function CabecalhoTabela() {
         <thead>
             <tr>
                 <th>Nome do Animes</th>
-                <th>Sinopse</th>
+                <th>Quantidade de Episódios</th>
+                <th>Autor</th>
+                <th>Estudio</th>
+                <th>Data</th>
+                <th>Links</th>
+                <th>Rating</th>
                 <th>Imagem do Animes</th>
                 <th>Delete</th>
             </tr>
@@ -26,7 +31,12 @@ const CorpoTabela = (props) => {
         return (
             <tr key={row.idAnime}>
                 <td>{row.nome}</td>
-                <td>{row.sinopse}</td>
+                <td>{row.quantEpisodios}</td>
+                <td>{row.autor}</td>
+                <td>{row.estudio}</td>
+                <td>{row.data}</td>
+                <td>{row.links}</td>
+                <td>{row.rating}</td>
                 <td><img src={'fotos/' + row.fotografia}
                     alt={'foto do ' + row.nome}
                     height="140"

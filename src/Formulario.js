@@ -16,14 +16,43 @@ class Formulario extends React.Component{
         this.state = {
             nome : "",
             fotografia: null,
-            sinopse: ""
+            rating: "",
+            sinopse: "",
+            quantEpisodios: "",
+            autor: "",
+            estudio: "",
+            data: "",
+            links: ""
         } 
     }
 
     handlerAnimeChange = (evento) =>{
+        //guardar os dados recolhidos
+        this.setState({
+            nome: evento.target.value
+        });
+    }
+
+    handlerRatingChange = (evento) =>{
+        //guardar os dados recolhidos
+        this.setState({
+            rating: evento.target.value
+        });
+    }
+
+
+    handlerQuantEpisodiosChange = (evento) =>{
+        //guardar os dados recolhidos
+        this.setState({
+            quantEpisodios: evento.target.value
+        });
+    }
+
+    
+    handlerAutorChange = (evento) =>{
         //validar os valores introduzidos na TextBox (Impede que o utilizador insira números)
         if(/\d/.test(evento.target.value)){
-            evento.target.setCustomValidity("Nome do Anime Inválido");
+            evento.target.setCustomValidity("Autor Inválido");
             return;
         }else {
             evento.target.setCustomValidity("");
@@ -31,7 +60,31 @@ class Formulario extends React.Component{
 
         //guardar os dados recolhidos
         this.setState({
-            nome: evento.target.value
+            autor: evento.target.value
+        });
+    }
+
+
+    handlerEstudioChange = (evento) =>{
+        //guardar os dados recolhidos
+        this.setState({
+            estudio: evento.target.value
+        });
+    }
+
+
+    handlerDataChange = (evento) =>{
+        //guardar os dados recolhidos
+        this.setState({
+            data: evento.target.value
+        });
+    }
+
+
+    handlerLinksChange = (evento) =>{
+        //guardar os dados recolhidos
+        this.setState({
+            links: evento.target.value
         });
     }
 
@@ -79,7 +132,13 @@ class Formulario extends React.Component{
         let dadosForm = {
             UpFotografia: this.state.fotografia,
             Nome: this.state.nome,
-            Sinopse: this.state.sinopse
+            Sinopse: this.state.sinopse,
+            QuantEpisodios: this.state.quantEpisodios,
+            Autor: this.state.Autor,
+            Estudio: this.state.estudio,
+            Data: this.state.data,
+            Links: this.state.links,
+            Rating: this.state.rating
         };
 
         // concretizar a exportação de dados para a <App/>
@@ -103,6 +162,47 @@ class Formulario extends React.Component{
                                         value={this.state.sinopse}
                                         onChange={this.handlerSinopseChange}
                                         className="form-control btn btn-outline-info" /><br/>
+
+                        QuantEpisodios: <input type="number"
+                                        min="1"
+                                        required
+                                        value={this.state.quantEpisodios}
+                                        onChange={this.handlerQuantEpisodiosChange}
+                                        className="form-control btn btn-outline-info" /><br/>
+
+                        Autor:        <input type="text"
+                                        required
+                                        value={this.state.autor}
+                                        onChange={this.handlerAutorChange}
+                                        className="form-control btn btn-outline-info" /><br/>
+
+                        Estudio:        <input type="text"
+                                        required
+                                        value={this.state.estudio}
+                                        onChange={this.handlerEstudioChange}
+                                        className="form-control btn btn-outline-info" /><br/>
+
+                        Data:        <input type="date"
+                                        required
+                                        value={this.state.data}
+                                        onChange={this.handlerDataChange}
+                                        className="form-control btn btn-outline-info" /><br/>
+
+                        Links:        <input type="link"
+                                        required
+                                        value={this.state.links}
+                                        onChange={this.handlerLinksChange}
+                                        className="form-control btn btn-outline-info" /><br/>
+
+
+                        Rating:        <input type="number"
+                                        max="10"
+                                        min="0"
+                                        required
+                                        value={this.state.rating}
+                                        onChange={this.handlerRatingChange}
+                                        className="form-control btn btn-outline-info" /><br/>
+
                                         
                         Foto do Anime:  <input type="file"
                                         required
